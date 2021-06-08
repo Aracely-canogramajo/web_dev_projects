@@ -1,0 +1,268 @@
+timestamp: 2021-05-12T17:14:05.231066
+CREATE TABLE "py4web_session"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "rkey" CHAR(512),
+    "rvalue" TEXT,
+    "expiration" INTEGER,
+    "created_on" TIMESTAMP,
+    "expires_on" TIMESTAMP
+);
+success!
+timestamp: 2021-05-12T17:14:05.251739
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "email" CHAR(512) UNIQUE,
+    "password" CHAR(512),
+    "first_name" CHAR(512),
+    "last_name" CHAR(512),
+    "sso_id" CHAR(512),
+    "action_token" CHAR(512),
+    "last_password_change" TIMESTAMP,
+    "past_passwords_hash" TEXT
+);
+success!
+timestamp: 2021-05-12T17:14:05.264359
+CREATE TABLE "auth_user_tag_groups"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "path" CHAR(512),
+    "record_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-05-12T18:38:16.816749
+CREATE TABLE "contact"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(512),
+    "last_name" CHAR(512)
+);
+success!
+timestamp: 2021-05-17T12:20:10.520724
+CREATE TABLE "posts"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "text" CHAR(512)
+);
+success!
+timestamp: 2021-05-17T12:20:10.532791
+CREATE TABLE "thumbs"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "rating" INTEGER,
+    "rater" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-05-17T18:53:47.486462
+ALTER TABLE "posts" ADD "first_name" CHAR(512);
+timestamp: 2021-05-17T18:53:47.486462
+ALTER TABLE "posts" ADD "last_name" CHAR(512);
+success!
+timestamp: 2021-05-18T12:12:13.894578
+ALTER TABLE "thumbs" ADD "post" INTEGER REFERENCES "posts" ("id") ON DELETE CASCADE  ;
+success!
+timestamp: 2021-05-18T21:49:57.569268
+ALTER TABLE "posts" ADD "email" CHAR(512);
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-05-19T22:09:51.188842
+ALTER TABLE "thumbs" ADD "email" CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-05-20T16:37:20.120330
+ALTER TABLE "posts" ADD "rating" CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-05-20T17:50:49.917191
+CREATE TABLE "likes"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "post" INTEGER REFERENCES "posts" ("id") ON DELETE CASCADE  ,
+    "likers" CHAR(512),
+    "dislikers" CHAR(512)
+);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
