@@ -1,0 +1,692 @@
+timestamp: 2021-05-31T13:26:44.330644
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "username" CHAR(512) UNIQUE,
+    "email" CHAR(512) UNIQUE,
+    "password" CHAR(512),
+    "first_name" CHAR(512),
+    "last_name" CHAR(512),
+    "sso_id" CHAR(512),
+    "action_token" CHAR(512),
+    "last_password_change" TIMESTAMP,
+    "past_passwords_hash" TEXT
+);
+success!
+timestamp: 2021-05-31T13:26:44.444574
+CREATE TABLE "auth_user_tag_groups"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "path" CHAR(512),
+    "record_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-05-31T13:26:44.749241
+CREATE TABLE "song"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "song_name" CHAR(512),
+    "artist" CHAR(512),
+    "album" CHAR(512),
+    "time_uploaded" CHAR(512),
+    "num_plays" INTEGER,
+    "num_reposts" INTEGER,
+    "num_likes" INTEGER,
+    "file_location" CHAR(512),
+    "art_location" CHAR(512),
+    "thumbnail" CHAR(512),
+    "user" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-05-31T13:26:44.837334
+CREATE TABLE "playlist"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "creator" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "playlist_name" CHAR(512),
+    "bio" CHAR(512),
+    "num_plays" INTEGER,
+    "num_resposts" INTEGER,
+    "num_likes" INTEGER,
+    "time_created" CHAR(512),
+    "time_modified" CHAR(512)
+);
+success!
+timestamp: 2021-05-31T13:26:44.937590
+CREATE TABLE "profile"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "bio" CHAR(512),
+    "private_acc" CHAR(1),
+    "featured_playlist" INTEGER REFERENCES "playlist" ("id") ON DELETE CASCADE  ,
+    "featured_song" INTEGER REFERENCES "song" ("id") ON DELETE CASCADE  ,
+    "featured_media" INTEGER,
+    "dark_mode" CHAR(1)
+);
+success!
+timestamp: 2021-05-31T13:26:45.032347
+CREATE TABLE "post"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "author" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "quoted_post" INTEGER REFERENCES "post" ("id") ON DELETE CASCADE  ,
+    "content" CHAR(512),
+    "num_likes" INTEGER,
+    "num_reposts" INTEGER,
+    "num_replies" INTEGER,
+    "time" CHAR(512),
+    "embedded_file" CHAR(512)
+);
+success!
+timestamp: 2021-05-31T13:26:45.122008
+CREATE TABLE "postlikes"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "post" INTEGER REFERENCES "post" ("id") ON DELETE CASCADE  ,
+    "user" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "time" CHAR(512)
+);
+success!
+timestamp: 2021-05-31T13:26:45.223038
+CREATE TABLE "follow"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "follower" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "followee" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "time" CHAR(512)
+);
+success!
+timestamp: 2021-06-01T12:29:42.903019
+ALTER TABLE "playlist" ADD "username" CHAR(512);
+success!
+timestamp: 2021-06-02T23:33:03.865298
+ALTER TABLE "playlist" ADD "num_reposts" INTEGER;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+<<<<<<< HEAD
+timestamp: 2021-06-03T23:41:15.231815
+ALTER TABLE "song" ADD "username" CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-06-04T14:00:40.225446
+ALTER TABLE "song" ADD "featured_playlist" INTEGER REFERENCES "playlist" ("id") ON DELETE CASCADE  ;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-06-05T11:17:52.403779
+CREATE TABLE "songinplaylist"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "song_name" INTEGER REFERENCES "song" ("id") ON DELETE CASCADE  ,
+    "playlist_in" INTEGER REFERENCES "playlist" ("id") ON DELETE CASCADE  
+);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+=======
+>>>>>>> c4d8db80937173670b1117a0314e9f08dae4bb00
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-06-06T02:32:38.804296
+ALTER TABLE "profile" ADD "profile_pic" TEXT;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-06-06T04:26:17.187107
+ALTER TABLE "song" ADD "song_pic" TEXT;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-06-06T21:28:43.919236
+ALTER TABLE "songinplaylist" ADD "user" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-06-07T00:06:12.644519
+ALTER TABLE "songinplaylist" ADD "name_of_song" INTEGER REFERENCES "song" ("id") ON DELETE CASCADE  ;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-06-07T00:45:28.812291
+ALTER TABLE "songinplaylist" ADD "name_song" CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-06-07T01:12:15.651423
+ALTER TABLE "songinplaylist" ADD "playid" INTEGER;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2021-06-07T01:17:54.026032
+ALTER TABLE "songinplaylist" ADD "song_play_id" INTEGER;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
